@@ -1,0 +1,372 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body {
+			font-family : segoe ui;
+		}
+
+		td, th {
+			padding: 0.5em;
+			text-align : left;
+			width: 10em;
+		}
+		th {
+			background-color : #EEEEEE;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+			font-size: 0.9em;
+		}
+
+		.DRC_summary_header {
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width: 100%;
+			align: left;
+		}
+
+		.DRC_summary_header_col1,
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3 {
+			color : black;
+			font-size:100%;
+			padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2em;
+			border : 0px solid black;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.DRC_summary_header_col1 {
+			font-weight: bold;
+			width: 9em;
+		}
+
+		.DRC_summary_header_col2 {
+			width: 0.1em;
+		
+		}
+
+		.DRC_summary_header_col3 {
+			width : auto;
+		}
+
+		.header_holder {
+		    Width = 100%;
+		    border = 0px solid green;
+		    padding = 0;
+		}
+
+
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 8em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://E:\Usuarios\weska\Documents\Altium\AD24\Templates\AD_logo.png
+		"><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">15/04/2024</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">06:29:31 p. m.</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:02</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///E:\Usuarios\weska\OneDrive - Instituto Politecnico Nacional\7 SEMESTRE\Sensortemperatura\SensorTempModulo\PCB SensorTemperatura.PcbDoc" class="file"><acronym title="E:\Usuarios\weska\OneDrive - Instituto Politecnico Nacional\7 SEMESTRE\Sensortemperatura\SensorTempModulo\PCB SensorTemperatura.PcbDoc">E:\Usuarios\weska\OneDrive - Instituto Politecnico Nacional\7 SEMESTRE\Sensortemperatura\SensorTempModulo\PCB SensorTemperatura.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">12</td></tr>
+</table>
+</td>
+</table><a name="IDQYNNQLUAGX3TKF1AGEK5VBOKBPM0RK4DQ3OABAIEZX4SDUCZTPTF"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDM412DEBIA3OHLAVQ4SEIZNKNPO3PBORIESQWU5M5F0QT3CVYSCLF">Clearance Constraint (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">4</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDQCNM2YCLFGMGGA0M3DTXN33XPJ2NH0DAKY5JIN34HRN33NBA33O">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDJ0N122UTN4ADL4SU3Y0D12PEEIKJQURMTQXBKPITTJZYWAIWKIOG">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDOP5XFRPKR2G1I52S5BFRPFTJTNSGT2Y1Q0FUMXJJEPCR0VCH3ZXG">Modified Polygon (Allow modified: No), (Allow shelved: No)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDIFTA3XEOUETQFCROREP4XNVEVKDNIBQ5Q4IO1DNH1ESK5N2SNAWN">Width Constraint (Min=0.254mm) (Max=0.254mm) (Preferred=0.254mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID4TO5TSPPUPL3HGASGTU1YTMFILI1EMQ5DVHZAYCF0O4YTHE0MRIG">Power Plane Connect Rule(Relief Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.254mm) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID2LDXY4NSWQNNGMBKH4BWFXK40DKVFZLWQFSWFCLDQCKDWWLNLJ3N">Hole Size Constraint (Min=0.025mm) (Max=2.54mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID3VWV5IWR2WGDDSIGTNE0SNDT0CNKAUZDYCCTAYEL4O2TZ14Q01KM">Hole To Hole Clearance (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDWCF3VPU5S4JCGJQNXWGRUKTC1GCQQDWWZVLJTACBUVLIZFKDBI0B">Minimum Solder Mask Sliver (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">3</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDGWSLZXCHRVUBGVB23N12UATJRJHOFSOA5XXXVRBRA4HJNWO2ARF">Silk To Solder Mask (Clearance=0.254mm) (IsPad),(All)</a></td>
+<td class="column2">5</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDUGNF2DAKQBLUJWD4SQSJXVWTOFDDNIUI1SRIJ4MF4DIGIEJ13KNP">Silk to Silk (Clearance=0.254mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID5BDK0VTCAMR5K0IG5RQP1NXSMJLAJLGS0JM2H0BG1VCOGS5WYYWB">Net Antennae (Tolerance=0mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDMKRT5BLCMRRUV1EOHSWKG5RGM10WZOW0AL3RWDLAX4NHEM2PMFG">Height Constraint (Min=0mm) (Max=25.4mm) (Prefered=12.7mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">12</td>
+</tr>
+</table><br><a name="IDM412DEBIA3OHLAVQ4SEIZNKNPO3PBORIESQWU5M5F0QT3CVYSCLF"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Clearance Constraint (Gap=0.254mm) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Usuarios\weska\OneDrive - Instituto Politecnico Nacional\7 SEMESTRE\Sensortemperatura\SensorTempModulo\PCB SensorTemperatura.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4138.47mil|Location2.X=4149.72mil|Location1.Y=2580.202mil|Location2.Y=2591.452mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Usuarios\weska\OneDrive - Instituto Politecnico Nacional\7 SEMESTRE\Sensortemperatura\SensorTempModulo\PCB SensorTemperatura.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4138.47mil|Location2.X=4149.72mil|Location1.Y=2580.202mil|Location2.Y=2591.452mil|Absolute=True">Clearance Constraint: (0.2mm &lt; 0.254mm) Between Pad C1-1(5.9mm,2.7mm) on Top Layer And Pad C1-2(5.9mm,3.66mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Usuarios\weska\OneDrive - Instituto Politecnico Nacional\7 SEMESTRE\Sensortemperatura\SensorTempModulo\PCB SensorTemperatura.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4186.304mil|Location2.X=4197.554mil|Location1.Y=2745.359mil|Location2.Y=2756.609mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Usuarios\weska\OneDrive - Instituto Politecnico Nacional\7 SEMESTRE\Sensortemperatura\SensorTempModulo\PCB SensorTemperatura.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4186.304mil|Location2.X=4197.554mil|Location1.Y=2745.359mil|Location2.Y=2756.609mil|Absolute=True">Clearance Constraint: (0.25mm &lt; 0.254mm) Between Pad R1-1(7.7mm,7.75mm) on Top Layer And Pad R1-2(7.7mm,7mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Usuarios\weska\OneDrive - Instituto Politecnico Nacional\7 SEMESTRE\Sensortemperatura\SensorTempModulo\PCB SensorTemperatura.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4115.438mil|Location2.X=4126.688mil|Location1.Y=2745.359mil|Location2.Y=2756.609mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Usuarios\weska\OneDrive - Instituto Politecnico Nacional\7 SEMESTRE\Sensortemperatura\SensorTempModulo\PCB SensorTemperatura.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4115.438mil|Location2.X=4126.688mil|Location1.Y=2745.359mil|Location2.Y=2756.609mil|Absolute=True">Clearance Constraint: (0.25mm &lt; 0.254mm) Between Pad R2-1(5.9mm,7.75mm) on Top Layer And Pad R2-2(5.9mm,7mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Usuarios\weska\OneDrive - Instituto Politecnico Nacional\7 SEMESTRE\Sensortemperatura\SensorTempModulo\PCB SensorTemperatura.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4218.784mil|Location2.X=4230.034mil|Location1.Y=2552.446mil|Location2.Y=2563.696mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Usuarios\weska\OneDrive - Instituto Politecnico Nacional\7 SEMESTRE\Sensortemperatura\SensorTempModulo\PCB SensorTemperatura.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4218.784mil|Location2.X=4230.034mil|Location1.Y=2552.446mil|Location2.Y=2563.696mil|Absolute=True">Clearance Constraint: (0.25mm &lt; 0.254mm) Between Pad R3-1(7.925mm,2.7mm) on Top Layer And Pad R3-2(8.675mm,2.7mm) on Top Layer </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDWCF3VPU5S4JCGJQNXWGRUKTC1GCQQDWWZVLJTACBUVLIZFKDBI0B"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Minimum Solder Mask Sliver (Gap=0.254mm) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Usuarios\weska\OneDrive - Instituto Politecnico Nacional\7 SEMESTRE\Sensortemperatura\SensorTempModulo\PCB SensorTemperatura.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4182.304mil|Location2.X=4193.554mil|Location1.Y=2745.359mil|Location2.Y=2756.609mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Usuarios\weska\OneDrive - Instituto Politecnico Nacional\7 SEMESTRE\Sensortemperatura\SensorTempModulo\PCB SensorTemperatura.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4182.304mil|Location2.X=4193.554mil|Location1.Y=2745.359mil|Location2.Y=2756.609mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.047mm &lt; 0.254mm) Between Pad R1-1(7.7mm,7.75mm) on Top Layer And Pad R1-2(7.7mm,7mm) on Top Layer [Top Solder] Mask Sliver [0.047mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Usuarios\weska\OneDrive - Instituto Politecnico Nacional\7 SEMESTRE\Sensortemperatura\SensorTempModulo\PCB SensorTemperatura.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4111.438mil|Location2.X=4122.688mil|Location1.Y=2745.359mil|Location2.Y=2756.609mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Usuarios\weska\OneDrive - Instituto Politecnico Nacional\7 SEMESTRE\Sensortemperatura\SensorTempModulo\PCB SensorTemperatura.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4111.438mil|Location2.X=4122.688mil|Location1.Y=2745.359mil|Location2.Y=2756.609mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.047mm &lt; 0.254mm) Between Pad R2-1(5.9mm,7.75mm) on Top Layer And Pad R2-2(5.9mm,7mm) on Top Layer [Top Solder] Mask Sliver [0.047mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Usuarios\weska\OneDrive - Instituto Politecnico Nacional\7 SEMESTRE\Sensortemperatura\SensorTempModulo\PCB SensorTemperatura.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4218.784mil|Location2.X=4230.034mil|Location1.Y=2548.446mil|Location2.Y=2559.696mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Usuarios\weska\OneDrive - Instituto Politecnico Nacional\7 SEMESTRE\Sensortemperatura\SensorTempModulo\PCB SensorTemperatura.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4218.784mil|Location2.X=4230.034mil|Location1.Y=2548.446mil|Location2.Y=2559.696mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.047mm &lt; 0.254mm) Between Pad R3-1(7.925mm,2.7mm) on Top Layer And Pad R3-2(8.675mm,2.7mm) on Top Layer [Top Solder] Mask Sliver [0.047mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDGWSLZXCHRVUBGVB23N12UATJRJHOFSOA5XXXVRBRA4HJNWO2ARF"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Silk To Solder Mask (Clearance=0.254mm) (IsPad),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Usuarios\weska\OneDrive - Instituto Politecnico Nacional\7 SEMESTRE\Sensortemperatura\SensorTempModulo\PCB SensorTemperatura.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4330.043mil|Location2.X=4341.293mil|Location1.Y=2796.154mil|Location2.Y=2807.404mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Usuarios\weska\OneDrive - Instituto Politecnico Nacional\7 SEMESTRE\Sensortemperatura\SensorTempModulo\PCB SensorTemperatura.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4330.043mil|Location2.X=4341.293mil|Location1.Y=2796.154mil|Location2.Y=2807.404mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.155mm &lt; 0.254mm) Between Arc (11.3mm,8.7mm) on Top Overlay And Pad J1-1(10.9mm,8.4mm) on Top Layer [Top Overlay] to [Top Solder] clearance [0.155mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Usuarios\weska\OneDrive - Instituto Politecnico Nacional\7 SEMESTRE\Sensortemperatura\SensorTempModulo\PCB SensorTemperatura.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4330.005mil|Location2.X=4341.255mil|Location1.Y=2775.871mil|Location2.Y=2787.121mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Usuarios\weska\OneDrive - Instituto Politecnico Nacional\7 SEMESTRE\Sensortemperatura\SensorTempModulo\PCB SensorTemperatura.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4330.005mil|Location2.X=4341.255mil|Location1.Y=2775.871mil|Location2.Y=2787.121mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Pad J1-1(10.9mm,8.4mm) on Top Layer And Track (11.25mm,7mm)(11.25mm,8.4mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Usuarios\weska\OneDrive - Instituto Politecnico Nacional\7 SEMESTRE\Sensortemperatura\SensorTempModulo\PCB SensorTemperatura.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4280.792mil|Location2.X=4292.042mil|Location1.Y=2775.871mil|Location2.Y=2787.121mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Usuarios\weska\OneDrive - Instituto Politecnico Nacional\7 SEMESTRE\Sensortemperatura\SensorTempModulo\PCB SensorTemperatura.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4280.792mil|Location2.X=4292.042mil|Location1.Y=2775.871mil|Location2.Y=2787.121mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Pad J1-2(10.1mm,8.4mm) on Top Layer And Track (9.75mm,7mm)(9.75mm,8.4mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Usuarios\weska\OneDrive - Instituto Politecnico Nacional\7 SEMESTRE\Sensortemperatura\SensorTempModulo\PCB SensorTemperatura.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4280.792mil|Location2.X=4292.042mil|Location1.Y=2740.438mil|Location2.Y=2751.688mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Usuarios\weska\OneDrive - Instituto Politecnico Nacional\7 SEMESTRE\Sensortemperatura\SensorTempModulo\PCB SensorTemperatura.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4280.792mil|Location2.X=4292.042mil|Location1.Y=2740.438mil|Location2.Y=2751.688mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Pad J1-3(10.1mm,7mm) on Top Layer And Track (9.75mm,7mm)(9.75mm,8.4mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\Usuarios\weska\OneDrive - Instituto Politecnico Nacional\7 SEMESTRE\Sensortemperatura\SensorTempModulo\PCB SensorTemperatura.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4330.005mil|Location2.X=4341.255mil|Location1.Y=2740.438mil|Location2.Y=2751.688mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\Usuarios\weska\OneDrive - Instituto Politecnico Nacional\7 SEMESTRE\Sensortemperatura\SensorTempModulo\PCB SensorTemperatura.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4330.005mil|Location2.X=4341.255mil|Location1.Y=2740.438mil|Location2.Y=2751.688mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Pad J1-4(10.9mm,7mm) on Top Layer And Track (11.25mm,7mm)(11.25mm,8.4mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>
